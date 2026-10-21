@@ -22,5 +22,11 @@ export default async function handler(req, res) {
     await sql`insert into produto_fotos (produto_id, url, ordem)
       values (${id}, ${b.url}, (select coalesce(max(ordem) + 1, 0) from produto_fotos where produto_id = ${id}))`
     res.json({ url: b.url })
-  } catch { res.status(400).json({ erro: 'Não foi possível enviar a foto.' }) }
+  } catch (e) {
+    console.error('foto:', e)
+    const m = String(e?.message || '')
+    res.status(400).json({ erro: /token/i.test(m) ? 'Armazenamento de fotos não configurado (falta BLOB_READ_WRITE_TOKEN na Vercel).'
+      : /private|public|access/i.test(m) ? 'O Blob da Vercel está privado. Crie um Blob store com acesso público.'
+      : 'Não foi possível enviar a foto. Detalhe: ' + m.slice(0, 120) })
+  }
 }

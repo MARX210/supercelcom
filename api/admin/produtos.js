@@ -1,3 +1,4 @@
+import { del } from '@vercel/blob'
 import { db } from '../_db.js'
 import { exigir } from '../_auth.js'
 
@@ -40,6 +41,14 @@ export default async function handler(req, res) {
       ])
       return res.json({ produtos, categorias })
     }
+    if (req.method === 'DELETE') {
+      const id = req.query.id
+      const fotos = await sql`select url from produto_fotos where produto_id = ${id}`
+      const [r] = await sql`delete from produtos where id = ${id} returning id`
+      if (!r) return res.status(404).json({ erro: 'Produto não encontrado.' })
+      await Promise.all(fotos.map(f => del(f.url).catch(() => {})))
+      return res.json({ ok: true })
+    }
     const o = limpar(req.body || {})
     const ctx = sql`select set_config('app.usuario_id', ${u.id}, true)`
     if (req.method === 'POST') {
@@ -58,5 +67,10 @@ export default async function handler(req, res) {
       return res.json({ id })
     }
     res.status(405).end()
-  } catch (e) { res.status(400).json({ erro: traduzir(e) }) }
+  } catch (e) {
+    if (req.method === 'DELETE') return res.status(400).json({ erro: /foreign key|violates/i.test(e.message)
+      ? 'Este produto já tem vendas ou histórico. Em vez de excluir, mude o status para "Fora de venda".'
+      : 'Não foi possível excluir.' })
+    res.status(400).json({ erro: traduzir(e) })
+  }
 }

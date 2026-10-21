@@ -52,7 +52,7 @@ function form(p) {
 <label>Descrição (aparece na vitrine)<textarea name="descricao" rows="3">${e(x.descricao)}</textarea></label>
 <label class="ck"><input type="checkbox" name="publicado"${x.publicado ? ' checked' : ''}> Mostrar na vitrine</label>
 ${p ? fotosHtml(x) : '<p class="nt">Salve primeiro; depois você adiciona as fotos.</p>'}
-<p class="er" id="er"></p><div class="two"><button type="button" class="bt g" id="fx">Fechar</button><button class="bt">Salvar</button></div></form>`
+<p class="er" id="er"></p><div class="two"><button type="button" class="bt g" id="fx">Fechar</button><button class="bt">Salvar</button></div>${p ? '<button type="button" class="bt g" id="ex" style="color:var(--rd)">Excluir produto</button>' : ''}</form>`
   if (!$('#dlg').open) $('#dlg').showModal()
   $('#pf').onsubmit = async ev => {
     ev.preventDefault(); const f = new FormData(ev.target), g = k => f.get(k)
@@ -77,6 +77,11 @@ document.addEventListener('click', async x => {
   if (t.id === 'sair') api('/api/login', { method: 'DELETE' }).finally(() => entrar())
   if (t.id === 'novo') form(null)
   if (t.id === 'fx') $('#dlg').close()
+  if (t.id === 'ex') {
+    const p = D.produtos.find(a => a.id === aberto)
+    if (!p || !confirm(`Excluir "${p.nome}"? Isso não pode ser desfeito.`)) return
+    try { await api('/api/admin/produtos?id=' + aberto, { method: 'DELETE' }); $('#dlg').close(); await carregar() } catch (er) { $('#er').textContent = er.message }
+  }
   if (t.classList.contains('card')) form(D.produtos.find(p => p.id === t.dataset.id))
   if (t.dataset.fd) {
     try { await api('/api/admin/foto?id=' + t.dataset.fd, { method: 'DELETE' }); await carregar(); form(D.produtos.find(p => p.id === aberto)) } catch (er) { $('#er').textContent = er.message }
