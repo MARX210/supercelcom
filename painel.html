@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel · Super Cell</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#f3f5fa;--card:#fff;--tx:#0b1530;--mut:#5d6985;--bd:#dfe4f0;--bl:#2f7bff;--or:#e8860c;--ok:#12a150;--rd:#e5202f;box-sizing:border-box;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+@media(prefers-color-scheme:dark){:root{--bg:#030b1f;--card:#0d1a38;--tx:#f2f5fc;--mut:#9aa8c7;--bd:#1d2c52;--or:#ff9a1f}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:40px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}header h1{font-size:18px}h1 i{font-style:normal;color:var(--or)}
+button,select,input,textarea{font:inherit;color:inherit}
+.bt{border:0;background:var(--bl);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;cursor:pointer}.bt.g{background:transparent;color:var(--mut);border:1px solid var(--bd)}
+.w{padding:0 16px;max-width:760px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.chip{font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--bd);white-space:nowrap}.chip.disponivel{background:#12a15022;color:var(--ok)}
+.nt{color:var(--mut);font-size:13px;margin-top:4px}.ok{color:var(--ok)}.rd,.er{color:var(--rd)}.er{font-size:13px}
+.f{display:grid;gap:10px}.f label{display:grid;gap:4px;font-size:13px;color:var(--mut);min-width:0}
+.f input,.f select,.f textarea,.busca{width:100%;min-width:0;padding:11px;border-radius:10px;border:1px solid var(--bd);background:var(--bg)}
+.busca{margin-bottom:10px}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.f label.ck{display:flex;gap:8px;align-items:center;color:var(--tx)}.f label.ck input{width:auto}
+.lg{max-width:380px;margin:12vh auto 0;padding:0 16px}.lg h1{font-size:26px}
+.ft{display:flex;gap:8px;flex-wrap:wrap}.ft span{position:relative}.ft img{width:72px;height:72px;object-fit:cover;border-radius:10px;border:1px solid var(--bd)}
+.ft button{position:absolute;top:-6px;right:-6px;border:0;border-radius:99px;width:22px;height:22px;background:var(--rd);color:#fff;cursor:pointer}
+dialog{border:1px solid var(--bd);border-radius:18px;background:var(--card);color:var(--tx);width:min(94vw,520px);max-height:90vh;padding:18px}dialog::backdrop{background:#000a}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<dialog id="dlg"></dialog>
+<script type="module" src="/src/painel.js"></script>
+</body>
+</html>

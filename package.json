@@ -1,0 +1,22 @@
+{
+  "name": "super-cell",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site da Super Cell - celulares e assistência técnica em Francisco Beltrão/PR",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "@vercel/blob": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,10 @@
+{"exemplo":true,
+"categorias":[{"id":"celulares","nome":"Celulares"},{"id":"smartwatches","nome":"Smartwatches"},{"id":"caixas-de-som","nome":"Caixas de som"},{"id":"fones","nome":"Fones de ouvido"}],
+"produtos":[
+{"id":"ex1","categoria":"celulares","nome":"iPhone 13","variacao":"128 GB · Azul","condicao":"seminovo","bateria":88,"descricao":"Aparelho bem conservado, sem marcas aparentes.","preco":269900,"precoPromo":null,"fotos":["/images/produto-5.jpg"],"entrada":"2026-10-10"},
+{"id":"ex2","categoria":"celulares","nome":"iPhone 14 Pro","variacao":"256 GB · Roxo","condicao":"seminovo","bateria":91,"descricao":"Acompanha carregador.","preco":449900,"precoPromo":429900,"fotos":["/images/produto-5.jpg"],"entrada":"2026-10-14"},
+{"id":"ex3","categoria":"celulares","nome":"Xiaomi Redmi Note","variacao":"128 GB · Preto","condicao":"novo","descricao":"Lacrado, com garantia.","preco":129900,"precoPromo":null,"fotos":["/images/produto-0.jpg"],"entrada":"2026-10-16"},
+{"id":"ex4","categoria":"smartwatches","nome":"Smartwatch Série 9","variacao":"Caixa 45 mm","condicao":"novo","descricao":"Acompanha pulseira extra.","preco":89900,"precoPromo":79900,"fotos":["/images/produto-7.jpg"],"entrada":"2026-10-12"},
+{"id":"ex5","categoria":"caixas-de-som","nome":"Caixa de som Bluetooth","variacao":"Portátil · À prova d'água","condicao":"novo","descricao":"Foto ainda não cadastrada.","preco":24900,"precoPromo":null,"fotos":[],"entrada":"2026-10-11"},
+{"id":"ex6","categoria":"fones","nome":"Fone de ouvido sem fio","variacao":"Branco","condicao":"novo","descricao":"Foto ainda não cadastrada.","preco":19900,"precoPromo":null,"fotos":[],"entrada":"2026-10-09"}
+]}
