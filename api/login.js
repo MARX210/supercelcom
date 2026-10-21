@@ -27,5 +27,5 @@ export default async function handler(req, res) {
     await sql`delete from sessoes where expira_em < now()`
     setCookie(res, token, 604800)
     res.json(u)
-  } catch { res.status(500).json({ erro: 'Erro no servidor.' }) }
+  } catch (e) { console.error('login falhou:', e?.message || e); res.status(500).json({ erro: 'Erro no servidor.' }) }
 }
